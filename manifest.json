@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "Bloqueador de redirecciones",
+  "version": "1.1.0",
+  "description": "Bloquea navegaciones y redirecciones forzadas hacia los dominios que elijas.",
+  "permissions": [
+    "declarativeNetRequest",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Bloqueador de redirecciones"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "blocked.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content-main.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "default-domains.js",
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}

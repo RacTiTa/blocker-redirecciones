@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>Redirecciones bloqueadas</h1>
+    <label class="switch" title="Activar o pausar el bloqueo">
+      <input type="checkbox" id="enabled">
+      <span class="track"><span class="thumb"></span></span>
+    </label>
+  </header>
+
+  <form id="add-form">
+    <input id="domain" type="text" placeholder="ejemplo.com" autocomplete="off" spellcheck="false">
+    <button type="submit">Bloquear</button>
+  </form>
+  <button id="add-current" class="link">Bloquear el sitio de esta pestaña</button>
+  <button id="add-defaults" class="link">Agregar lista recomendada</button>
+  <p id="error" class="error" hidden></p>
+
+  <ul id="list"></ul>
+  <p id="empty" class="empty">Todavía no bloqueaste ningún dominio. Agregá el primero arriba.</p>
+
+  <footer id="status"></footer>
+  <script src="default-domains.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

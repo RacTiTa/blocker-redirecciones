@@ -1,0 +1,53 @@
+:root {
+  --ink: #1d2733;
+  --paper: #eef1f4;
+  --line: #cfd6de;
+  --muted: #5d6b7a;
+  --signal: #e8590c;
+  --signal-ink: #ffffff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; width: 320px; padding: 14px;
+  font: 13px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink); background: var(--paper);
+}
+header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+h1 { font-size: 15px; margin: 0; font-weight: 650; letter-spacing: -0.01em; }
+
+form { display: flex; gap: 6px; }
+input[type="text"] {
+  flex: 1; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px;
+  font: inherit; color: inherit; background: #fff;
+}
+button[type="submit"] {
+  padding: 7px 12px; border: 0; border-radius: 6px; cursor: pointer;
+  background: var(--signal); color: var(--signal-ink); font: inherit; font-weight: 600;
+}
+button.link { display: block;
+  margin-top: 6px; padding: 0; border: 0; background: none; cursor: pointer;
+  color: var(--muted); font: inherit; text-decoration: underline; text-underline-offset: 2px;
+}
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+.error { color: #b42318; margin: 6px 0 0; }
+
+ul { list-style: none; margin: 12px 0 0; padding: 0; border-top: 1px solid var(--line); max-height: 260px; overflow-y: auto; }
+li { display: flex; align-items: center; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--line); }
+li span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+li button {
+  border: 0; background: none; cursor: pointer; color: var(--muted);
+  font: inherit; padding: 2px 6px; border-radius: 4px;
+}
+li button:hover { color: #b42318; background: #fbe4e1; }
+
+.empty { color: var(--muted); margin: 14px 0 0; }
+footer { margin-top: 12px; color: var(--muted); font-size: 12px; }
+
+.switch input { position: absolute; opacity: 0; }
+.track { display: block; width: 34px; height: 20px; border-radius: 10px; background: var(--line); position: relative; cursor: pointer; transition: background .15s; }
+.thumb { position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: transform .15s; }
+.switch input:checked + .track { background: var(--signal); }
+.switch input:checked + .track .thumb { transform: translateX(14px); }
+.switch input:focus-visible + .track { outline: 2px solid var(--ink); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .track, .thumb { transition: none; } }
